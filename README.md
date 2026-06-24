@@ -33,6 +33,30 @@ as part of the Google Cybersecurity Professional Certificate.
 *Key finding:* Risk score of 8/10 due to missing controls around data 
 encryption, access management, and incident recovery.
 
-📄 View completed checklist](Control and compliance checklist 
+📄 View completed checklist](Control and compliance 
+
+
+# Google Cybersecurity Professional Certificate Portfolio
+**Benjamin Nkansah Peprah** | Junior SOC Analyst (In Training)
+📍 Kiel, Germany | GitHub: b4benn
+
+## Progress
+| Course | Title | Status |
+|--------|-------|--------|
+| 1 | Foundations of Cybersecurity | ✅ Complete |
+| 2 | Play It Safe: Manage Security Risks | ✅ Complete |
+| 3 | Connect and Protect: Networks and Network Security | 🔄 In Progress |
+| 4-8 | Coming Soon | ⏳ Pending |
+
+## Skills Gained So Far
+- NIST Cybersecurity Framework (CSF)
+- Security risk assessment
+- Security audits and controls evaluation
+- Incident response playbooks
+- SIEM tool fundamentals
+- Threat and vulnerability identification
+
+
+
 
 
