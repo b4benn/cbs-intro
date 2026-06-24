@@ -85,4 +85,91 @@
 
 
 
+# Incident Response Playbook — Phishing Attack
+**Prepared by:** Benjamin Nkansah Peprah
+**Date:** June 2026
+**Framework:** NIST SP 800-61
+
+---
+
+## Scenario
+A Botium Toys employee receives and clicks a phishing email
+containing a malicious link. Credentials may be compromised.
+
+---
+
+## Phase 1 — Preparation
+- Ensure all staff have completed phishing awareness training
+- Maintain an up-to-date contact list for incident response team
+- Confirm SIEM alerts are active for suspicious login attempts
+- Verify that email filtering tools are in place
+
+---
+
+## Phase 2 — Detection & Analysis
+| Step | Action |
+|------|--------|
+| 1 | Employee reports suspicious email to IT/Security team |
+| 2 | Analyst reviews email headers and embedded links |
+| 3 | Check SIEM logs for any unusual login activity |
+| 4 | Determine if credentials were entered on malicious site |
+| 5 | Identify all affected accounts and systems |
+| 6 | Assign severity level: Low / Medium / High / Critical |
+
+---
+
+## Phase 3 — Containment
+**Short-term:**
+- Immediately disable the affected user account
+- Block the malicious URL at the firewall level
+- Isolate affected device from the network
+
+**Long-term:**
+- Force password reset for all potentially affected accounts
+- Enable multi-factor authentication (MFA) on all accounts
+- Notify relevant stakeholders of the incident
+
+---
+
+## Phase 4 — Eradication
+- Remove any malicious files or software from affected devices
+- Scan all systems for indicators of compromise (IOCs)
+- Patch any vulnerabilities exploited during the attack
+- Confirm no persistence mechanisms remain on the network
+
+---
+
+## Phase 5 — Recovery
+- Restore affected accounts with new secure credentials
+- Monitor systems closely for 72 hours post-incident
+- Confirm business operations are fully restored
+- Document all actions taken during the incident
+
+---
+
+## Phase 6 — Post-Incident Review
+| Question | Notes |
+|----------|-------|
+| How was the phishing email delivered? | |
+| What controls failed or were missing? | |
+| How long did detection take? | |
+| What improvements are needed? | |
+
+**Lessons learned report to be completed within 5 business days.**
+
+---
+
+## Severity Classification
+| Level | Criteria |
+|-------|---------|
+| Low | Phishing email received, no link clicked |
+| Medium | Link clicked, no credentials entered |
+| High | Credentials entered, single account affected |
+| Critical | Multiple accounts compromised, data exfiltrated |
+
+
+
+
+
+
 
