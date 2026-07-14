@@ -57,6 +57,53 @@ encryption, access management, and incident recovery.
 - Threat and vulnerability identification
 
 
+----------------------------------//---/-----------
 
 
+
+
+# Cybersecurity Incident Report
+
+## Section 1: Identify the type of attack that may have caused this network interruption
+
+**One potential explanation for the website's connection timeout error message is:**
+
+- **The logs show that:**
+    - A single source IP address, `203.0.113.0`, is sending a continuous and overwhelming number of TCP `[SYN]` requests to the web server (port 443) at `192.0.2.1`.
+    - The log entries show repeated SYN packets from `203.0.113.0` to the server without completing the three-way handshake, as indicated by the lack of subsequent ACK packets from that source to finalize the connections.
+    - This pattern is visible across multiple log entries (e.g., lines 52, 57, 59, 61, 66, 68, 70, 72, 74, 76, 78, 80, 81, 82).
+
+- **This event could be:**
+    - A **SYN Flood attack**, which is a specific type of **Denial of Service (DoS)** attack.
+    - The attacker sends a high volume of `[SYN]` packets, often with spoofed IP addresses, to overwhelm the server's ability to process legitimate connection requests.
+    - While the logs show a single source IP, the attacker could be using this IP as a spoofed address or launching a DoS attack from a single compromised machine.
+
+---
+
+## Section 2: Explain how the attack is causing the website to malfunction
+
+**When website visitors try to establish a connection with the web server, a three-way handshake occurs using the TCP protocol. Explain the three steps of the handshake:**
+
+1.  **SYN:** The client sends a `[SYN]` packet to the server to initiate a connection request.
+2.  **SYN-ACK:** The server responds with a `[SYN, ACK]` packet to acknowledge the request and synchronize its own sequence number.
+3.  **ACK:** The client sends a final `[ACK]` packet to acknowledge the server's response, establishing a full connection.
+
+**Explain what happens when a malicious actor sends a large number of SYN packets all at once:**
+
+- The attacker's SYN packets cause the web server to allocate resources (memory and processing power) for each half-open connection.
+- The server sends a `[SYN, ACK]` reply and then waits for the final `[ACK]` to complete the handshake.
+- Since the attacker never sends the final ACK, these connections remain in a half-open state, consuming all available server resources.
+- This overwhelms the server, making it unable to respond to legitimate SYN requests, resulting in connection timeouts.
+
+**Explain what the logs indicate and how that affects the server:**
+
+- The logs show a flood of `[SYN]` packets from `203.0.113.0`.
+- The server attempts to respond to each with a `[SYN, ACK]` but many of these requests are not completed.
+- This is evident in the log where legitimate client requests (e.g., from `198.51.100.23` or `198.51.100.14`) take a long time to be processed.
+- The server becomes so overwhelmed that it eventually cannot handle legitimate traffic, leading to **HTTP 504 Gateway Timeout** errors (as seen at line 77) for legitimate visitors attempting to access `sales.html`.
+- The attack is successfully denying service to legitimate employees and customers.
+
+---
+
+## Section 3: Evidence from Wireshark Log
 
